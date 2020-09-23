@@ -10,13 +10,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "3.8.1",
     "mitt": "^2.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "slate": "0.47.7",
     "slate-react": "0.22.9",
+    "socket.io-client": "^2.3.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@types/immutable": "^3.8.7",
     "@types/slate": "^0.47.7",
-    "@types/slate-react": "^0.22.9"
+    "@types/slate-react": "^0.22.9",
+    "@types/socket.io-client": "^1.4.33"
   }
 }

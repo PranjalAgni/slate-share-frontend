@@ -3,11 +3,13 @@ import SyncingEditor from './components/SyncingEditor';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <SyncingEditor />
-      <br />
-      <SyncingEditor />
-      <br />
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <SyncingEditor />
     </div>
   );
