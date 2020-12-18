@@ -12,24 +12,26 @@ import {
 import { initialText } from '../data/text';
 
 const socket = io(process.env.REACT_APP_WS_SERVER_URL);
-interface Props {}
+interface Props {
+  groupId: string;
+}
 
-const SyncingEditor: React.FC<Props> = () => {
+const SyncingEditor: React.FC<Props> = ({ groupId }) => {
   const [text, setText] = useState(initialText);
   const editor = useRef<Editor | null>(null);
   const remote = useRef(false);
-  const editorUID = useRef(`${Date.now()}`);
+  const editorUID = useRef(Date.now().toString());
 
   useEffect(() => {
-    socket.once(INIT_TEXT, (data: ValueJSON) => {
-      console.log('Initial mounting data: ', data);
-      setText(Value.fromJSON(data));
+    socket.once(INIT_TEXT, (data: ValueJSON) => setText(Value.fromJSON(data)));
+
+    socket.emit(INIT_TEXT_REQUEST, {
+      key: groupId,
     });
 
-    socket.emit(INIT_TEXT_REQUEST);
-
+    const REMOTE_EDITOR_OPERATIONS_GROUPID = `${REMOTE_EDITOR_OPERATIONS}_${groupId}`;
     socket.on(
-      REMOTE_EDITOR_OPERATIONS,
+      REMOTE_EDITOR_OPERATIONS_GROUPID,
       ({
         editorId,
         operations,
@@ -38,6 +40,7 @@ const SyncingEditor: React.FC<Props> = () => {
         operations: Operation[];
       }) => {
         if (editorId !== editorUID.current) {
+          console.log('Remote editor in the group triggered....');
           remote.current = true;
           operations.forEach((ops: any) => editor.current!.applyOperation(ops));
           remote.current = false;
@@ -46,7 +49,7 @@ const SyncingEditor: React.FC<Props> = () => {
     );
 
     return () => {
-      socket.off(REMOTE_EDITOR_OPERATIONS);
+      socket.off(REMOTE_EDITOR_OPERATIONS_GROUPID);
     };
   }, []);
 
@@ -77,6 +80,7 @@ const SyncingEditor: React.FC<Props> = () => {
         editorId: editorUID.current,
         operations: filteredOperations,
         editorText: value,
+        groupId,
       });
     }
   };

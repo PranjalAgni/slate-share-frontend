@@ -12,8 +12,10 @@
     "@types/react-dom": "^16.9.0",
     "immutable": "3.8.1",
     "mitt": "^2.1.0",
+    "nanoid": "^3.1.16",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "slate": "0.47.7",
     "slate-react": "0.22.9",
@@ -43,6 +45,8 @@
   },
   "devDependencies": {
     "@types/immutable": "^3.8.7",
+    "@types/nanoid": "^2.1.0",
+    "@types/react-router-dom": "^5.1.6",
     "@types/slate": "^0.47.7",
     "@types/slate-react": "^0.22.9",
     "@types/socket.io-client": "^1.4.33"
