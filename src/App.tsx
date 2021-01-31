@@ -13,7 +13,7 @@ const App: React.FC = () => {
       }}
     >
       <h3>
-        Share your notes instantly{' '}
+        Realtime notes sharing{' '}
         <span role="img" aria-labelledby="writing">
           ✍️
         </span>
