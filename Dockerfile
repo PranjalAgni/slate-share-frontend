@@ -1,9 +1,8 @@
-FROM node:alpine as builder
+FROM node:alpine
 WORKDIR /usr/src/app
 RUN npm i -g serve
 COPY package.json .
 RUN yarn install
 COPY . .
-RUN yarn build
 EXPOSE 5000
 CMD ["yarn", "run", "prod"]

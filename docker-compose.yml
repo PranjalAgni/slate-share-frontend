@@ -3,6 +3,7 @@ version: '3.7'
 services:
   slate-client:
     container_name: slate-client
+    env_file: .env
     build:
       context: .
     volumes:
@@ -10,5 +11,3 @@ services:
       - '.:/usr/src/app/node_modules'
     ports:
       - '5000:5000'
-    environment:
-      - NODE_ENV=production
