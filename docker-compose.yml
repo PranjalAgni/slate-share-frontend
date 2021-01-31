@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  slate-share-frontend:
-    container_name: slate-share-frontend
+  slate-client:
+    container_name: slate-client
     build:
       context: .
     volumes:
       - '.:/usr/src/app'
       - '.:/usr/src/app/node_modules'
     ports:
-      - '8080:80'
+      - '5000:5000'
     environment:
       - NODE_ENV=production
