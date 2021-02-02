@@ -89,7 +89,7 @@ const SyncingEditor: React.FC<Props> = ({ groupId }) => {
       ref={editor}
       style={{
         backgroundColor: '#fafafa',
-        width: 400,
+        width: 500,
         maxWidth: 800,
         minHeight: 150,
       }}

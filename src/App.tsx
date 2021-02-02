@@ -1,5 +1,4 @@
 import React from 'react';
-import SyncingEditor from './components/SyncingEditor';
 import AppRouter from './router/AppRouter';
 
 const App: React.FC = () => {
